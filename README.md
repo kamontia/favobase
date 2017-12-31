@@ -21,5 +21,5 @@ Add a tag to your favorite tweets.
 Using docker.
 
 ```
-$ docker build -t 
+$ docker-compose up
 ```
