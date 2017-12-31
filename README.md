@@ -1,1 +1,25 @@
 # favobase
+Add a tag to your favorite tweets.
+
+## Ruby version
+2.5.0
+
+## System dependencies
+
+## Configuration
+
+## Database creation
+
+## Database initialization
+
+## How to run the test suite
+
+## Services (job queues, cache servers, search engines, etc.)
+
+## Deployment instructions
+
+Using docker.
+
+```
+$ docker build -t 
+```
