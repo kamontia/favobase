@@ -16,6 +16,6 @@ class BaseController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    print @current_user
+    pp @current_user
   end
 end
