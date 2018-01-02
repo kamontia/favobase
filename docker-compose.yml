@@ -7,6 +7,8 @@ web:
     - "3000:3000"
   links:
     - db:db
+  environment:
+    - RAILS_ENV=development
 db:
   image: mongo:3.6.1
   environment:
