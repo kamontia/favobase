@@ -2,7 +2,8 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <% if current_user %>
-  <%= current_user.uid %>
+  <div id="uid">UID: <%= current_user.uid %></div>
+  <div id="nickname">NickName: <%= current_user.nickname %></div>
   <%= link_to 'ログアウト', logout_path %>
 <% else %>
   <%= link_to '/auth/twitter', class: "btn btn-block btn-social btn-twitter" do %>
