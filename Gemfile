@@ -60,3 +60,9 @@ gem 'twitter'
 gem 'oauth'
 gem 'omniauth-twitter'
 gem 'settingslogic'
+
+# UI/UX
+gem 'bootstrap-sass'
+#gem 'sass-rails'
+#gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails'
