@@ -18,3 +18,5 @@ COPY Gemfile.lock $APP_ROOT
 RUN bundle install
 
 COPY . $APP_ROOT
+
+RUN rake db:migrate
