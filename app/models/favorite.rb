@@ -1,6 +1,6 @@
 class Favorite < ApplicationRecord
-  # プロパティの設定
   attr_accessor :contents
+  self.primary_key = "tweet_id"
 
   def initialize(contents)
     @contents = contents

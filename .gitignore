@@ -46,5 +46,8 @@ bower.json
 # Ignore node_modules
 node_modules/
 
-# mongodb data dir
+# mariadb data dir
 data/*
+
+# mariadb password file
+config/mariadb.yml

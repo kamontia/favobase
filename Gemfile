@@ -39,7 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'mongoid', '~> 6.0.0.rc0'
+  gem 'mysql2'
 end
 
 group :development do

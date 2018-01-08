@@ -18,8 +18,17 @@ Add a tag to your favorite tweets.
 
 ## Deployment instructions
 
-Using docker.
+1. modify secrets value
+  * config/secrets.yml
+  * config/mariadb.yml
+
+copy .sample file.
+
+2. deploy application with docker.
 
 ```
-$ docker-compose up
+$ docker-compose build
+$ docker-compose run --rm web rake db:create  
+$ docker-compose run --rm web rake db:migrate
+$ docker-compose up -d
 ```
