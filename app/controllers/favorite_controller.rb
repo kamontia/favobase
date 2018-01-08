@@ -1,10 +1,11 @@
 class FavoriteController < ApplicationController
+  require 'net/http'
+  require 'json'
+  require 'oauth'
+
+  helper_method :current_user
 
   def index
-    render html: 'hello, app'
-  end
-
-  def show
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.application.secrets.twitter_consumer_key
       config.consumer_secret = Rails.application.secrets.twitter_consumer_secret
@@ -12,32 +13,42 @@ class FavoriteController < ApplicationController
       config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
     end
 
-    @tweets = []
-    since_id = nil
+    # Prepare using Twitter API
+    # TODO: Method
+    consumer = OAuth::Consumer.new(
+      Rails.application.secrets.twitter_consumer_key,
+      Rails.application.secrets.twitter_consumer_secret,
+      site: 'https://api.twitter.com/'
+    )
+    endpoint = OAuth::AccessToken.new(consumer, Rails.application.secrets.twitter_access_token, Rails.application.secrets.twitter_access_token_secret)
 
+    # Create request and Reqest via GET
+    # TODO: Method
+    user_id = current_user.uid
+    pp user_id
+    response = endpoint.get('https://api.twitter.com/1.1/favorites/list.json?user_id='+user_id)
 
-      tweets = client.search('PUBG', count: 30, result_type: 'recent', exclude: 'retweets', since_id: since_id)
-      # 取得したツイートをモデルに渡す
-      tweets.take(30).each do |tw|
-        tweet = Favorite.new(tw.full_text)
-        @tweets << tweet
-      end
+    result = JSON.parse(response.body)
+    # pp result
 
-    # # 検索ワードが存在していたらツイートを取得
-    if params[:keyword].present?
-      # リツイートを除く、検索ワードにひっかかった最新10件のツイートを取得する
-      tweets = client.search(params[:keyword], count: 10, result_type: 'recent', exclude: 'retweets', since_id: since_id)
-      # 取得したツイートをモデルに渡す
-      tweets.take(10).each do |tw|
-        tweet = Tweet.new(tw.full_text)
-        @tweets << tweet
-      end
-  　end
+    @favorite_list = []
+    result.take(20).each do |fv|
+      tmp = fv['text']
+      @favorite_list << tmp
+    end
+
+    pp @favorite_list
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @tweets } # jsonを指定した場合、jsonフォーマットで返す
+      format.json { render json: @favorite_list } # jsonを指定した場合、jsonフォーマットで返す
     end
-  end
 end
+
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    pp @current_user
+  end
 end
