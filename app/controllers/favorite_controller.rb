@@ -22,9 +22,11 @@ class FavoriteController < ApplicationController
     )
     endpoint = OAuth::AccessToken.new(consumer, Rails.application.secrets.twitter_access_token, Rails.application.secrets.twitter_access_token_secret)
 
-    # Create request and Reqest via GET 
+    # Create request and Reqest via GET
     # TODO: Method
-    response = endpoint.get('https://api.twitter.com/1.1/favorites/list.json?user_id=145616945')
+    user_id = current_user.uid
+    pp user_id
+    response = endpoint.get('https://api.twitter.com/1.1/favorites/list.json?user_id='+user_id)
 
     result = JSON.parse(response.body)
     # pp result
