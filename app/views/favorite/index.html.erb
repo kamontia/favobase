@@ -1,0 +1,14 @@
+<% if @favorite_list.present? %>
+  <h2>検索結果</h2>
+  <ul>
+    <% @favorite_list.each_with_index do |favorite_text, i| %>
+      <div class="list">
+        <li>Favorite <%= i %>:
+          <%= favorite_text %>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+<% else %>
+  <p>favoriteがありません</p>
+<% end %>
