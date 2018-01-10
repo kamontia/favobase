@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-# class User < ActiveRecord::Base
+  has_many :favorites, through: :favorite_users
+  has_many :favorite_users
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
