@@ -12,5 +12,13 @@
  *
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+ /* @import "bootstrap-sprockets";
+ @import "bootstrap"; */
+
+
+ /* ...
+ *= require bootstrap
+ *= require font-awesome/font-awesome
+ *= require magnific-popup/magnific-popup
+ *= require creative/creative
+ */
