@@ -21,4 +21,3 @@
 //= require scrollreveal/scrollreveal.min
 //= require jquery/jquery.easing.min
 //= require magnific-popup/jquery.magnific-popup.min
-//= require creative/creative
