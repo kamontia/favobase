@@ -12,5 +12,15 @@
  *
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+ /* @import "bootstrap-sprockets";
+ @import "bootstrap"; */
+
+
+ /* ...
+ *= require bootstrap/bootstrap.min
+ *= require bootstrap/bootstrap-grid.min
+ *= require bootstrap/bootstrap-reboot.min
+ *= require bootstrap/bootstrap-theme
+ *= require font-awesome/font-awesome
+ *= require magnific-popup/magnific-popup
+  */

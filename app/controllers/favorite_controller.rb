@@ -3,6 +3,8 @@ class FavoriteController < ApplicationController
   require 'json'
   require 'oauth'
 
+  # layout 'application0'
+
   helper_method :current_user
 
   def index
